@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Form.css';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const Form = () => {
@@ -9,6 +9,22 @@ const Form = () => {
     const [elo, setElo] = useState();
     const [division, setDivision] = useState('senior');
     const {tg} = useTelegram();
+
+    const onSendData = useCallback(() => {
+        const data = {
+            nickname,
+            elo,
+            division,
+        }
+        tg.onSendData(JSON.stringify(data));
+    }, [tg, nickname, elo, division])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    })
 
     useEffect(() => {
         tg.MainButton.setParams({
