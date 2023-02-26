@@ -16,8 +16,8 @@ const Form = () => {
             elo,
             division,
         }
-        tg.onSendData(JSON.stringify(data));
-    }, [tg, nickname, elo, division])
+        tg.SendData(JSON.stringify(data));
+    }, [nickname, elo, division, tg])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
