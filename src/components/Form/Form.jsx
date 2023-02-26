@@ -16,7 +16,7 @@ const Form = () => {
             elo,
             division
         }
-        tg.SendData(JSON.stringify(data));
+        tg.sendData(JSON.stringify(data));
     }, [nickname, elo, division, tg])
 
     useEffect(() => {
