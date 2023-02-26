@@ -5,8 +5,8 @@ import { useTelegram } from '../../hooks/useTelegram';
 
 const Form = () => {
 
-    const [nickname, setNickname] = useState();
-    const [elo, setElo] = useState();
+    const [nickname, setNickname] = useState('');
+    const [elo, setElo] = useState('');
     const [division, setDivision] = useState('senior');
     const {tg} = useTelegram();
 
