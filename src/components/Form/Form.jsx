@@ -14,7 +14,7 @@ const Form = () => {
         const data = {
             nickname,
             elo,
-            division,
+            division
         }
         tg.SendData(JSON.stringify(data));
     }, [nickname, elo, division, tg])
@@ -30,7 +30,7 @@ const Form = () => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         })
-    })
+    }, [tg])
 
     useEffect(() => {
         if(!nickname || !elo) {
